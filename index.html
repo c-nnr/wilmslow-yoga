@@ -1,1074 +1,216 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wilmslow Yoga | Find Your Inner Peace</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Neue Montreal", sans-serif;
-        color: #333;
-        background-color: #f9f7f4;
-        overflow-x: hidden;
-      }
-
-      h1,
-      h2,
-      h3,
-      h4 {
-        font-family: "Playfair Display", serif;
-        font-weight: 700;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-
-      /* Header Styles */
-      header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-        padding: 20px 0;
-        transition: all 0.3s ease;
-        background: rgba(239, 234, 228, 0.9);
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      }
-
-      header.scrolled {
-        padding: 15px 0;
-        background: rgba(239, 234, 228, 0.95);
-      }
-
-      .header-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .logo {
-        font-family: "Playfair Display", serif;
-        font-size: 28px;
-        font-weight: 700;
-        color: #48606b;
-        text-decoration: none;
-      }
-
-      .logo span {
-        color: #a78a6b;
-      }
-
-      nav ul {
-        display: flex;
-        list-style: none;
-      }
-
-      nav ul li {
-        margin-left: 30px;
-      }
-
-      nav ul li a {
-        text-decoration: none;
-        color: #48606b;
-        font-weight: 500;
-        font-size: 16px;
-        transition: all 0.3s ease;
-        position: relative;
-      }
-
-      nav ul li a:hover {
-        color: #a78a6b;
-      }
-
-      nav ul li a::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: #a78a6b;
-        transition: width 0.3s ease;
-      }
-
-      nav ul li a:hover::after {
-        width: 100%;
-      }
-
-      .mobile-menu-btn {
-        display: none;
-        background: none;
-        border: none;
-        font-size: 24px;
-        color: #48606b;
-        cursor: pointer;
-      }
-
-      /* Hero Section */
-      .hero {
-        height: 100vh;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        background:
-          linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-          url("images/incense_burning.jpg") no-repeat center center/cover;
-        color: #efeae4;
-      }
-
-      .hero-content {
-        max-width: 800px;
-        padding: 0 20px;
-      }
-
-      .hero h1 {
-        font-size: 4rem;
-        margin-bottom: 20px;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-      }
-
-      .hero p {
-        font-size: 1.5rem;
-        margin-bottom: 30px;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-      }
-
-      .btn {
-        display: inline-block;
-        padding: 15px 35px;
-        background: #a78a6b;
-        color: #efeae4;
-        text-decoration: none;
-        border-radius: 30px;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        border: 2px solid #a78a6b;
-      }
-
-      .btn:hover {
-        background: transparent;
-        color: #a78a6b;
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      .btn-outline {
-        background: transparent;
-        color: #a78a6b;
-        margin-left: 15px;
-      }
-
-      .btn-outline:hover {
-        background: #a78a6b;
-        color: #efeae4;
-      }
-
-      /* Classes Section */
-      .section-title {
-        text-align: center;
-        margin: 80px 0 50px;
-      }
-
-      .section-title h2 {
-        font-size: 2.5rem;
-        color: #7a90a8;
-        position: relative;
-        display: inline-block;
-        padding-bottom: 15px;
-      }
-
-      .section-title h2::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 3px;
-        background: #a78a6b;
-      }
-
-      .classes-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        gap: 30px;
-        margin-bottom: 80px;
-      }
-
-      .class-card {
-        position: relative;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-        background: #efeae4;
-        display: flex;
-        flex-direction: column; /* Stack image and content vertically */
-        height: 100%; /* Full height to fill grid cell */
-      }
-
-      .class-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-      }
-
-      .class-img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        transition: transform 0.5s ease;
-        display: block;
-        flex-shrink: 0;
-      }
-
-      .class-card:hover .class-img {
-        transform: scale(1.05);
-      }
-
-      .class-content {
-        padding: 20px;
-        color: #a78a6b; /* Adjusted text color for contrast */
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-
-      .class-content h3 {
-        font-size: 1.5rem;
-        margin-top: 0;
-        margin-bottom: 10px;
-        flex-shrink: 0;
-      }
-
-      .class-content p {
-        margin-bottom: 15px;
-        font-size: 0.9rem;
-        line-height: 1.5;
-        color: #48606b;
-        flex-shrink: 0;
-        /*overflow-wrap: break-word;*/
-        hyphens: auto;
-      }
-
-      /* About Section */
-      .about {
-        background: #f0ebe6;
-        padding: 80px 0;
-      }
-
-      .about-content {
-        display: flex;
-        align-items: center;
-        gap: 50px;
-      }
-
-      .about-img {
-        flex: 1;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-      }
-
-      .about-img img {
-        width: 100%;
-        display: block;
-      }
-
-      .about-text {
-        flex: 1;
-      }
-
-      .about-text h2 {
-        font-size: 2.5rem;
-        color: #a78a6b;
-        margin-bottom: 20px;
-      }
-
-      .about-text p {
-        margin-bottom: 20px;
-        line-height: 1.8;
-        color: #48606b;
-      }
-
-      .instructor {
-        display: flex;
-        align-items: center;
-        margin-top: 30px;
-      }
-
-      .instructor-img {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        overflow: hidden;
-        margin-right: 20px;
-        border: 3px solid #a78a6b;
-      }
-
-      .instructor-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .instructor-info h4 {
-        font-size: 1.3rem;
-        color: #7a90a8;
-        margin-bottom: 5px;
-      }
-
-      .instructor-info p {
-        margin: 0;
-        color: #777;
-        font-style: italic;
-      }
-
-      /* Testimonials */
-      .testimonials {
-        padding: 80px 0;
-        background: #fff;
-      }
-
-      .testimonial-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-      }
-
-      .testimonial-card {
-        background: #f9f7f4;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        position: relative;
-      }
-
-      .testimonial-card::before {
-        content: '"';
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        font-size: 5rem;
-        color: #a78a6b;
-        opacity: 0.2;
-        font-family: "Playfair Display", serif;
-      }
-
-      .testimonial-content {
-        margin-top: 30px;
-        position: relative;
-        z-index: 1;
-      }
-
-      .testimonial-content p {
-        font-style: italic;
-        line-height: 1.8;
-        margin-bottom: 20px;
-        color: #555;
-      }
-
-      .client {
-        display: flex;
-        align-items: center;
-      }
-
-      .client-img {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        overflow: hidden;
-        margin-right: 15px;
-      }
-
-      .client-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .client-info h4 {
-        font-size: 1.1rem;
-        color: #7a90a8;
-        margin-bottom: 5px;
-      }
-
-      .client-info p {
-        margin: 0;
-        color: #777;
-        font-size: 0.9rem;
-      }
-
-      /* Contact Section */
-      .contact {
-        background:
-          linear-gradient(rgba(72, 96, 107, 0.6), rgba(72, 96, 107, 0.6)),
-          url("images/pigeon-dl.jpeg") no-repeat center center/cover;
-        padding: 80px 0;
-        color: #efeae4;
-        text-align: center;
-      }
-
-      .contact h2 {
-        font-size: 2.5rem;
-        margin-bottom: 20px;
-      }
-
-      .contact p {
-        max-width: 700px;
-        margin: 0 auto 40px;
-        font-size: 1.1rem;
-        line-height: 1.8;
-      }
-
-      .contact-info {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 30px;
-        margin-bottom: 40px;
-      }
-
-      .info-item {
-        display: flex;
-        align-items: center;
-      }
-
-      .info-item i {
-        font-size: 1.5rem;
-        margin-right: 15px;
-        color: #a78a6b;
-      }
-
-      /* Footer */
-      footer {
-        background: #48606b;
-        color: #efeae4;
-        padding: 50px 0 20px;
-      }
-
-      .footer-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 30px;
-        margin-bottom: 40px;
-      }
-
-      .footer-col h3 {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-        color: #a78a6b;
-        position: relative;
-        padding-bottom: 10px;
-      }
-
-      .footer-col h3::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 50px;
-        height: 2px;
-        background: #a78a6b;
-      }
-
-      .footer-col p {
-        line-height: 1.8;
-        margin-bottom: 20px;
-        color: #bbb;
-      }
-
-      .social-links {
-        display: flex;
-        gap: 15px;
-      }
-
-      .social-links a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        background: #48606b;
-        color: #efeae4;
-        border-radius: 50%;
-        transition: all 0.3s ease;
-      }
-
-      .social-links a:hover {
-        background: #a78a6b;
-        transform: translateY(-3px);
-      }
-
-      .social-links img {
-        width: 35px;
-        height: 35px;
-        object-fit: contain;
-        filter: brightness(0) saturate(100%) invert(1) sepia(5%) saturate(400%)
-          hue-rotate(180deg) brightness(95%) contrast(85%);
-        transition: filter 0.3s ease;
-      }
-
-      /* On hover, make white like the font icon */
-      .social-links a:hover img {
-        filter: brightness(0) invert(1);
-      }
-
-      .footer-col ul {
-        list-style: none;
-      }
-
-      .footer-col ul li {
-        margin-bottom: 12px;
-      }
-
-      .footer-col ul li a {
-        color: #bbb;
-        text-decoration: none;
-        transition: all 0.3s ease;
-      }
-
-      .footer-col ul li a:hover {
-        color: #a78a6b;
-        padding-left: 5px;
-      }
-
-      .copyright {
-        text-align: center;
-        padding-top: 20px;
-        border-top: 1px solid #555;
-        color: #efeae4;
-        font-size: 0.9rem;
-      }
-
-      .quote-container {
-        margin: 2rem 0;
-        position: relative;
-      }
-
-      .source {
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: #48606b;
-        margin-bottom: 0.5rem;
-      }
-
-      .main-quote {
-        font-size: 1.4rem;
-        font-style: italic;
-        line-height: 1.5;
-        color: #a78a6b;
-        position: relative;
-        padding: 1rem 0;
-      }
-
-      .main-quote::before,
-      .main-quote::after {
-        content: '"';
-        font-size: 2rem;
-        color: #a78a6b;
-        position: absolute;
-      }
-
-      .main-quote::before {
-        top: 0.25rem;
-        left: -0.75rem;
-      }
-
-      .main-quote::after {
-        bottom: 0.25rem;
-        right: -0.75rem;
-      }
-
-      /* Responsive Design */
-      @media (max-width: 992px) {
-        .hero h1 {
-          font-size: 3rem;
-        }
-
-        .about-content {
-          flex-direction: column;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .mobile-menu-btn {
-          display: block;
-        }
-
-        nav ul {
-          position: fixed;
-          top: 80px;
-          left: -100%;
-          width: 100%;
-          height: calc(100vh - 80px);
-          background: #efeae4;
-          flex-direction: column;
-          align-items: center;
-          padding-top: 50px;
-          transition: all 0.3s ease;
-        }
-
-        nav ul.active {
-          left: 0;
-        }
-
-        nav ul li {
-          margin: 20px 0;
-        }
-
-        .hero h1 {
-          font-size: 2.5rem;
-        }
-
-        .hero p {
-          font-size: 1.2rem;
-        }
-
-        .btn {
-          padding: 12px 25px;
-        }
-
-        .btn-outline {
-          margin-left: 10px;
-        }
-      }
-
-      @media (max-width: 576px) {
-        .hero h1 {
-          font-size: 2rem;
-        }
-
-        .section-title h2 {
-          font-size: 2rem;
-        }
-
-        .classes-grid {
-          grid-template-columns: 1fr;
-          gap: 20px;
-        }
-
-        .class-card {
-          height: auto; /* Allow cards to expand naturally */
-          display: flex;
-          flex-direction: column;
-        }
-
-        .class-img {
-          height: 180px;
-          object-fit: cover;
-        }
-
-        .class-content {
-          padding: 16px;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-        }
-
-        .class-content h3 {
-          font-size: 1.3rem;
-          margin-bottom: 10px;
-        }
-
-        .class-content p {
-          font-size: 0.95rem;
-          margin-bottom: 12px;
-          line-height: 1.5;
-        }
-
-        .btn {
-          align-self: flex-start;
-          padding: 10px 20px;
-          font-size: 0.95rem;
-        }
-
-        .yoga-quote {
-          padding: 1.5rem;
-          font-size: 0.9rem;
-        }
-
-        .main-quote {
-          font-size: 1.2rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Header -->
-    <header id="header">
-      <div class="container header-container">
-        <a href="#" class="logo">Wilmslow<span>Yoga</span></a>
-        <button class="mobile-menu-btn" id="menuToggle">
-          <i class="fas fa-bars"></i>
-        </button>
-        <nav>
-          <ul id="navMenu">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#classes">Classes</a></li>
-            <li><a href="#about">About</a></li>
-            <!--<li><a href="#testimonials">Testimonials</a></li>-->
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-      <div class="hero-content">
-        <h1>Wilmslow Yoga</h1>
-        <p>Yoga brings harmony between mind, body and spirit.</p>
-        <div class="hero-buttons">
-          <a href="#classes" class="btn btn-outline">Explore Classes</a>
-          <a href="pricing.html" class="btn btn-outline">Book a Session</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="about" id="about">
-      <div class="container">
-        <div class="about-content">
-          <div class="about-img">
-            <img src="images/laura_beach_stand.jpeg" alt="Yoga Instructor" />
-          </div>
-          <div class="about-text">
-            <h2>About Your Instructor</h2>
-            <p>
-              I'm Laura, a Cheshire based yoga teacher offering one-to-one,
-              couples and small group sessions from my home studio.
-            </p>
-            <p>
-              I teach Hatha, Vinyasa and Restorative yoga; creating a welcoming
-              space, where everyone can explore movement and breath at their own
-              pace.
-            </p>
-            <p>
-              My intention is to make yoga accessible to all, meeting you
-              exactly where you are on your journey.
-            </p>
-            <div class="quote-container">
-              <p class="source">Rooted in timeless wisdom of Bhagavada Gita</p>
-              <cite class="main-quote">
-                Yoga is the journey of the self, through the self, to the self.
-              </cite>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Wilmslow Yoga | Find Your Inner Peace</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+
+    <body>
+        <div id="header-placeholder"></div>
+
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>Wilmslow Yoga</h1>
+                <p>Yoga brings harmony between mind, body and spirit.</p>
+                <div class="hero-buttons">
+                    <a href="#classes" class="btn btn-outline"
+                        >Explore Classes</a
+                    >
+                    <a href="pricing.html" class="btn btn-outline"
+                        >Book a Session</a
+                    >
+                </div>
             </div>
-            <p>
-              My classes invite you to find harmony between mind, body and
-              spirit.
-            </p>
-            <p>
-              Together, we will explore how gentle awareness, mindful movement,
-              and steady breath can cultivate balance, strength and inner calm;
-              both on and off the mat.
-            </p>
+        </section>
 
-            <!-- <p>Hi, I am Laura McColgan. Yoga has been such an important part of my own life, helping me find a balance, calm and strength both on and off the mat.</p>
+        <!-- Your page-specific sections -->
+        <section class="about" id="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-img">
+                        <img
+                            src="images/laura_beach_stand.jpeg"
+                            alt="Yoga Instructor"
+                        />
+                    </div>
+                    <div class="about-text">
+                        <h2>About Your Instructor</h2>
+                        <p>
+                            I'm Laura, a Cheshire based yoga teacher offering
+                            one-to-one, couples and small group sessions from my
+                            home studio.
+                        </p>
+                        <p>
+                            I teach Hatha, Vinyasa and Restorative yoga;
+                            creating a welcoming space, where everyone can
+                            explore movement and breath at their own pace.
+                        </p>
+                        <p>
+                            My intention is to make yoga accessible to all,
+                            meeting you exactly where you are on your journey.
+                        </p>
+                        <div class="quote-container">
+                            <p class="source">
+                                Rooted in timeless wisdom of Bhagavada Gita
+                            </p>
+                            <cite class="main-quote">
+                                Yoga is the journey of the self, through the
+                                self, to the self.
+                            </cite>
+                        </div>
+                        <p>
+                            My classes invite you to find harmony between mind,
+                            body and spirit.
+                        </p>
+                        <p>
+                            Together, we will explore how gentle awareness,
+                            mindful movement, and steady breath can cultivate
+                            balance, strength and inner calm; both on and off
+                            the mat.
+                        </p>
+
+                        <!-- <p>Hi, I am Laura McColgan. Yoga has been such an important part of my own life, helping me find a balance, calm and strength both on and off the mat.</p>
                     <p>As a teacher, I care deeply about creating a welcoming space where everyone feels comfortable exploring movement and breath work at their own pace.</p>
                     <p>My goal is to make yoga accessible, enjoyable and supportive - so you can leave class feeling grounded, relaxed and a little more connected to yourself.</p> -->
-            <div class="instructor">
-              <div class="instructor-img">
-                <img src="images/laura_guy.jpg" alt="Laura McColgan" />
-              </div>
-              <div class="instructor-info">
-                <h4>Laura McColgan</h4>
+                        <div class="instructor">
+                            <div class="instructor-img">
+                                <img
+                                    src="images/laura_guy.jpg"
+                                    alt="Laura McColgan"
+                                />
+                            </div>
+                            <div class="instructor-info">
+                                <h4>Laura McColgan</h4>
+                                <p>
+                                    <a
+                                        href="https://app.yogaalliance.org/teacherpublicprofile?id=003TR00001DloXiYAJ"
+                                        target="_blank"
+                                        style="
+                                            color: inherit;
+                                            text-decoration: none;
+                                        "
+                                        >Certified Yoga Instructor (RYT 200)
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="instructor-img">
+                                <img
+                                    src="images/RYT200.png"
+                                    alt="Certification"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Classes Section -->
+        <section class="classes" id="classes">
+            <div class="container">
+                <div class="section-title">
+                    <h2>My Yoga Classes</h2>
+                </div>
+                <div class="classes-grid">
+                    <!-- Class 1 -->
+                    <div class="class-card">
+                        <img
+                            src="images/rejoice_ocean_sunset.jpg"
+                            alt="Hatha Yoga"
+                            class="class-img"
+                        />
+                        <div class="class-content">
+                            <h3>Hatha Yoga</h3>
+                            <p>
+                                Slower paced mindful practice that helps improve
+                                strength, flexibility, posture and breath
+                                awareness; while preparing the body and mind for
+                                mediation.
+                            </p>
+                            <a href="pricing.html" class="btn">Learn More</a>
+                        </div>
+                    </div>
+
+                    <!-- Class 2 -->
+                    <div class="class-card">
+                        <img
+                            src="images/knee_to_elbow_sunset.jpg"
+                            alt="Vinyasa Flow"
+                            class="class-img"
+                        />
+                        <div class="class-content">
+                            <h3>Vinyasa Flow</h3>
+                            <p>
+                                Dynamic style of yoga where postures are linked
+                                together in flowing sequence; guided by the
+                                rhythm of the breath. Builds heat, strength and
+                                flexibility while encouraging presence and focus
+                                through continuous movement.
+                            </p>
+                            <a href="pricing.html" class="btn">Learn More</a>
+                        </div>
+                    </div>
+
+                    <!-- Class 3 -->
+                    <div class="class-card">
+                        <img
+                            src="images/woman_seated_reach_sunset.jpg"
+                            alt="Yin Yoga"
+                            class="class-img"
+                        />
+                        <div class="class-content">
+                            <h3>Restorative Yoga</h3>
+                            <p>
+                                Gentle, calming practice which emphasises
+                                stillness, slow breathing and relaxing tension.
+                                It helps to soothe the nervous system and
+                                promote healing.
+                            </p>
+                            <a href="pricing.html" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="container">
+                <h2>Begin Your Yoga Journey</h2>
                 <p>
-                  <a
-                    href="https://app.yogaalliance.org/teacherpublicprofile?id=003TR00001DloXiYAJ"
-                    target="_blank"
-                    style="color: inherit; text-decoration: none"
-                    >Certified Yoga Instructor (RYT 200) ......................
-                  </a>
+                    Discover the art of balance - on the mat and within
+                    yourself.
                 </p>
-              </div>
-              <div class="instructor-img">
-                <img src="images/RYT200.png" alt="Certification" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Classes Section -->
-    <section class="classes" id="classes">
-      <div class="container">
-        <div class="section-title">
-          <h2>My Yoga Classes</h2>
-        </div>
-        <div class="classes-grid">
-          <!-- Class 1 -->
-          <div class="class-card">
-            <img
-              src="images/rejoice_ocean_sunset.jpg"
-              alt="Hatha Yoga"
-              class="class-img"
-            />
-            <div class="class-content">
-              <h3>Hatha Yoga</h3>
-              <p>
-                Slower paced mindful practice that helps improve strength,
-                flexibility, posture and breath awareness; while preparing the
-                body and mind for mediation.
-              </p>
-              <a href="pricing.html" class="btn">Learn More</a>
-            </div>
-          </div>
-
-          <!-- Class 2 -->
-          <div class="class-card">
-            <img
-              src="images/knee_to_elbow_sunset.jpg"
-              alt="Vinyasa Flow"
-              class="class-img"
-            />
-            <div class="class-content">
-              <h3>Vinyasa Flow</h3>
-              <p>
-                Dynamic style of yoga where postures are linked together in
-                flowing sequence; guided by the rhythm of the breath. Builds
-                heat, strength and flexibility while encouraging presence and
-                focus through continuous movement.
-              </p>
-              <a href="pricing.html" class="btn">Learn More</a>
-            </div>
-          </div>
-
-          <!-- Class 3 -->
-          <div class="class-card">
-            <img
-              src="images/woman_seated_reach_sunset.jpg"
-              alt="Yin Yoga"
-              class="class-img"
-            />
-            <div class="class-content">
-              <h3>Restorative Yoga</h3>
-              <p>
-                Gentle, calming practice which emphasises stillness, slow
-                breathing and relaxing tension. It helps to soothe the nervous
-                system and promote healing.
-              </p>
-              <a href="pricing.html" class="btn">Learn More</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-
-    <!-- Testimonials Section -->
-    <!-- <section class="testimonials" id="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>Student Testimonials</h2>
-            </div>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>"Maya's classes have completely transformed my relationship with my body and mind. I've found a sense of peace I never thought possible."</p>
-                        <div class="client">
-                            <div class="client-img">
-                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Sarah Johnson">
-                            </div>
-                            <div class="client-info">
-                                <h4>Sarah Johnson</h4>
-                                <p>Student for 2 years</p>
-                            </div>
-                        </div>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Wilmslow, Cheshire</span>
                     </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>"The mindfulness techniques I learned in Maya's classes have helped me manage stress at work and find balance in my daily life."</p>
-                        <div class="client">
-                            <div class="client-img">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Michael Chen">
-                            </div>
-                            <div class="client-info">
-                                <h4>Michael Chen</h4>
-                                <p>Student for 1 year</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>"As a beginner, I was nervous to start yoga. Maya created such a welcoming environment that I now look forward to every class!"</p>
-                        <div class="client">
-                            <div class="client-img">
-                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Emma Rodriguez">
-                            </div>
-                            <div class="client-info">
-                                <h4>Emma Rodriguez</h4>
-                                <p>Student for 6 months</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-      <div class="container">
-        <h2>Begin Your Yoga Journey</h2>
-        <p>Discover the art of balance - on the mat and within yourself.</p>
-        <div class="contact-info">
-          <div class="info-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>Wilmslow, Cheshire</span>
-          </div>
-          <!-- <div class="info-item">
+                    <!-- <div class="info-item">
                     <i class="fas fa-phone"></i>
                     <span>(555) 123-4567</span>
                 </div> -->
-          <div class="info-item">
-            <i class="fas fa-envelope"></i>
-            <span>laura@wilmslowyoga.com</span>
-          </div>
-        </div>
-        <a href="pricing.html" class="btn">Schedule a Session</a>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-col">
-            <h3>Wilmslow Yoga</h3>
-            <p>
-              A supportive space to explore yoga, build strength, and find calm.
-            </p>
-            <div class="social-links">
-              <!-- <a href="#"><i class="fab fa-facebook-f"></i></a> -->
-              <a href="https://www.instagram.com/laura_mccolgan/?hl=en"
-                ><i class="fab fa-instagram"></i
-              ></a>
-              <a
-                href="https://app.yogaalliance.org/teacherpublicprofile?id=003TR00001DloXiYAJ"
-                ><img src="images/ya_logo_reg.png"
-              /></a>
-              <!-- <a href="#"><i class="fab fa-youtube"></i></a> -->
-              <!-- <a href="#"><i class="fab fa-pinterest"></i></a> -->
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>laura@wilmslowyoga.com</span>
+                    </div>
+                </div>
+                <a href="pricing.html" class="btn">Schedule a Session</a>
             </div>
-          </div>
+        </section>
 
-          <div class="footer-col">
-            <h3>Quick Links</h3>
-            <ul>
-              <li><a href="#home">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#classes">Classes</a></li>
-              <!--<li><a href="#testimonials">Testimonials</a></li>-->
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div>
-
-          <!-- <div class="footer-col">
-                    <h3>Class Schedule</h3>
-                    <ul>
-                        <li>Monday: Hatha Yoga (9:00 AM)</li>
-                        <li>Wednesday: Vinyasa Flow (6:00 PM)</li>
-                        <li>Friday: Yin Yoga (7:00 PM)</li>
-                        <li>Saturday: Meditation (10:00 AM)</li>
-                    </ul>
-                </div> -->
-
-          <div class="footer-col">
-            <h3>Newsletter</h3>
-            <p>
-              Subscribe to receive yoga tips, class updates, and wellness
-              inspiration.
-            </p>
-            <form>
-              <input
-                type="email"
-                placeholder="Your Email"
-                style="
-                  width: 100%;
-                  padding: 12px;
-                  margin-bottom: 10px;
-                  border-radius: 4px;
-                  border: none;
-                "
-              />
-              <button type="submit" class="btn" style="width: 100%">
-                Subscribe
-              </button>
-            </form>
-          </div>
-        </div>
-
-        <div class="copyright">
-          <p>&copy; 2025 Wilmslow Yoga. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
-
-    <script>
-      // Mobile Menu Toggle
-      const menuToggle = document.getElementById("menuToggle");
-      const navMenu = document.getElementById("navMenu");
-
-      menuToggle.addEventListener("click", () => {
-        navMenu.classList.toggle("active");
-      });
-
-      // Header scroll effect
-      const header = document.getElementById("header");
-
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 100) {
-          header.classList.add("scrolled");
-        } else {
-          header.classList.remove("scrolled");
-        }
-      });
-
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            window.scrollTo({
-              top: target.offsetTop - 80,
-              behavior: "smooth",
-            });
-
-            // Close mobile menu if open
-            navMenu.classList.remove("active");
-          }
-        });
-      });
-    </script>
-  </body>
+        <div id="footer-placeholder"></div>
+        <script src="js/main.js"></script>
+    </body>
 </html>
